@@ -385,3 +385,247 @@
 
 </body>
 </html>
+<!-- FAQ Chatbot -->
+<style>
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+.chatbot-toggle {
+    background-color: #9b2d6e;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s;
+    border: none;
+    font-size: 1.8rem;
+}
+.chatbot-toggle:hover {
+    transform: scale(1.05);
+    background-color: #7a2356;
+}
+.chatbot-window {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    max-width: calc(100vw - 40px);
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1001;
+}
+.chatbot-header {
+    background-color: #9b2d6e;
+    color: white;
+    padding: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.chatbot-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.chatbot-messages {
+    height: 350px;
+    overflow-y: auto;
+    padding: 16px;
+    background: #f9f9f9;
+}
+.chatbot-message {
+    margin-bottom: 12px;
+    display: flex;
+}
+.chatbot-message.user {
+    justify-content: flex-end;
+}
+.chatbot-message.bot {
+    justify-content: flex-start;
+}
+.message-bubble {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 18px;
+    font-size: 0.9rem;
+}
+.chatbot-message.user .message-bubble {
+    background-color: #9b2d6e;
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+.chatbot-message.bot .message-bubble {
+    background-color: #e9ecef;
+    color: #333;
+    border-bottom-left-radius: 4px;
+}
+.chatbot-faq-buttons {
+    padding: 12px;
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.faq-btn {
+    background: #fef9fc;
+    border: 1px solid #9b2d6e;
+    color: #9b2d6e;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.faq-btn:hover {
+    background: #9b2d6e;
+    color: white;
+}
+.chatbot-input {
+    display: flex;
+    padding: 12px;
+    border-top: 1px solid #eee;
+    gap: 8px;
+}
+.chatbot-input input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-family: inherit;
+}
+.chatbot-input button {
+    background: #9b2d6e;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+</style>
+
+<div class="chatbot-container">
+    <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <span><i class="fas fa-robot"></i> Beauty Assistant</span>
+            <button id="closeChatbot">&times;</button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chatbot-message bot">
+                <div class="message-bubble">Hello! 👋 Welcome to Lovely Beauty College. How can I help you today?</div>
+            </div>
+        </div>
+        <div class="chatbot-faq-buttons" id="faqButtons">
+            <button class="faq-btn" data-question="What courses do you offer?">📚 Courses</button>
+            <button class="faq-btn" data-question="How long are the courses?">⏰ Duration</button>
+            <button class="faq-btn" data-question="Do you have branches near me?">📍 Branches</button>
+            <button class="faq-btn" data-question="How can I enroll?">📝 Enrollment</button>
+            <button class="faq-btn" data-question="Do you offer certificates?">🎓 Certificates</button>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbotInput" placeholder="Type your question...">
+            <button id="sendMessage">Send</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// FAQ Database (editable via CMS later)
+const faqDatabase = {
+    "what courses do you offer": "We offer Professional Hairdressing, Makeup Artistry, Nail Technology, Skincare & Facial Treatments, and Beauty Entrepreneurship. Check our Courses page for details!",
+    "courses": "We offer 5 main programs: Hairdressing (3-6 months), Makeup Artistry (2-4 months), Nail Technology (2-3 months), Skincare (3 months), and Entrepreneurship (2 months).",
+    "how long are the courses": "Course durations range from 2 to 6 months depending on the program. Hairdressing is 3-6 months, Makeup is 2-4 months, Nail Tech is 2-3 months.",
+    "duration": "Most courses take 2-6 months to complete. We offer flexible schedules!",
+    "branches": "We have 5 branches across Addis Ababa: Megenagna (Main), Arada, Merkato, Gofa, and Bole Road. Visit our Branches page for maps!",
+    "do you have branches near me": "We have 5 branches in Addis Ababa. Check our Branches page to find the nearest location!",
+    "how can i enroll": "You can enroll by visiting any branch, calling +251 99 826 1099, or filling out the contact form on our website.",
+    "enrollment": "To enroll, simply visit our college, call us, or send a message through our Contact page. We'll guide you through the process!",
+    "do you offer certificates": "Yes! All our courses include a professional certificate upon completion, recognized in the beauty industry.",
+    "certificates": "Yes, graduates receive a professional certificate that helps them find jobs or start their own business.",
+    "price": "Please contact us directly for current course fees. Prices vary by program and duration.",
+    "cost": "For pricing information, please call or email us. We offer affordable payment options!",
+    "hello": "Hello! Welcome to Lovely Beauty College. How can I assist you today?",
+    "hi": "Hi there! 👋 Feel free to ask me about courses, branches, enrollment, or anything else!",
+    "thank you": "You're very welcome! 😊 Is there anything else I can help you with?"
+};
+
+const chatbotMessages = document.getElementById('chatbotMessages');
+const chatbotInput = document.getElementById('chatbotInput');
+const sendBtn = document.getElementById('sendMessage');
+const chatbotToggle = document.getElementById('chatbotToggle');
+const chatbotWindow = document.getElementById('chatbotWindow');
+const closeChatbot = document.getElementById('closeChatbot');
+
+function addMessage(text, isUser = false) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
+    messageDiv.innerHTML = `<div class="message-bubble">${text}</div>`;
+    chatbotMessages.appendChild(messageDiv);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+function getBotResponse(question) {
+    const lowerQuestion = question.toLowerCase().trim();
+    for (const [key, answer] of Object.entries(faqDatabase)) {
+        if (lowerQuestion.includes(key)) {
+            return answer;
+        }
+    }
+    return "Thank you for your question! Please call us at +251 99 826 1099 or email info@lovelybeauty.com for more details. 😊";
+}
+
+function sendUserMessage() {
+    const message = chatbotInput.value.trim();
+    if (!message) return;
+    
+    addMessage(message, true);
+    chatbotInput.value = '';
+    
+    setTimeout(() => {
+        const response = getBotResponse(message);
+        addMessage(response, false);
+    }, 500);
+}
+
+sendBtn.addEventListener('click', sendUserMessage);
+chatbotInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendUserMessage();
+});
+
+chatbotToggle.addEventListener('click', () => {
+    chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
+});
+
+closeChatbot.addEventListener('click', () => {
+    chatbotWindow.style.display = 'none';
+});
+
+// FAQ button handlers
+document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const question = btn.getAttribute('data-question');
+        addMessage(question, true);
+        setTimeout(() => {
+            const response = getBotResponse(question);
+            addMessage(response, false);
+        }, 300);
+    });
+});
+</script>
