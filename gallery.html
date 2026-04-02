@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery – Lovely Beauty College</title>
+    <meta name="description" content="Photos of training sessions, student work, and facilities at Lovely Beauty College">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.5; color: #1a1a2e; background: #fff; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        h1 { font-size: 2.5rem; margin-bottom: 16px; }
+        
+        .section-title { text-align: center; margin-bottom: 48px; }
+        .section-title h1 { color: #9b2d6e; margin-bottom: 12px; }
+        
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            flex-wrap: wrap;
+        }
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #9b2d6e;
+        }
+        .logo span { font-weight: 400; color: #333; }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a2e;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #9b2d6e; }
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        .gallery-section {
+            padding: 60px 0;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            cursor: pointer;
+            aspect-ratio: 1 / 1;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 16px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+        }
+        
+        footer {
+            background-color: #1a1a2e;
+            color: #ccc;
+            padding: 48px 0 24px;
+            margin-top: 60px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h3 { color: white; margin-bottom: 20px; }
+        .footer-col p, .footer-col a { color: #bbb; text-decoration: none; line-height: 1.8; }
+        .footer-col a:hover { color: #9b2d6e; }
+        .social-links a { display: inline-block; margin-right: 15px; font-size: 1.3rem; }
+        .copyright { text-align: center; padding-top: 24px; border-top: 1px solid #333; font-size: 0.9rem; }
+        
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 16px;
+                padding: 20px 0;
+            }
+            .nav-links.active { display: flex; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo"><a href="index.html">Lovely Beauty <span>College</span></a></div>
+            <button class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="branches.html">Branches</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h1>Our Gallery</h1>
+                <p>Training sessions, student work, and campus life</p>
+            </div>
+            
+            <div class="gallery-grid" id="galleryContainer">
+                <!-- Gallery images load here -->
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightboxImg" src="">
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Lovely Beauty College</h3>
+                <p>Empowering youth with professional beauty skills since 1996.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="courses.html">Courses</a></p>
+                <p><a href="branches.html">Branches</a></p>
+                <p><a href="contact.html">Contact</a></p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> +251 99 826 1099</p>
+                <p><i class="fas fa-envelope"></i> info@lovelybeauty.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Lovely Beauty College. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+    
+    // Gallery images (will be editable via CMS later)
+    const galleryImages = [
+        { src: "https://placehold.co/600x600/fdf2f8/9b2d6e?text=Hairdressing+Class", caption: "Hairdressing Practical Session" },
+        { src: "https://placehold.co/600x600/fdf2f8/9b2d6e?text=Makeup+Class", caption: "Makeup Artistry Training" },
+        { src: "https://placehold.co/600x600/fdf2f8/9b2d6e?text=Nail+Art", caption: "Nail Art Workshop" },
+        { src: "https://placehold.co/600x600/fdf2f8/9b2d6e?text=Graduation", caption: "Graduation Ceremony" },
+        { src: "https://placehold.co/600x600/fdf2f8/9b2d6e?text=Students+at+Work", caption: "Students Practicing" },
+        { src: "https://placehold.co/600x600/fdf2f8/9b2d6e?text=Salon+Equipment", caption: "Our Training Facilities" }
+    ];
+    
+    const galleryContainer = document.getElementById('galleryContainer');
+    
+    function renderGallery() {
+        galleryContainer.innerHTML = galleryImages.map(img => `
+            <div class="gallery-item" onclick="openLightbox('${img.src}')">
+                <img src="${img.src}" alt="${img.caption}">
+                <div class="gallery-overlay">${img.caption}</div>
+            </div>
+        `).join('');
+    }
+    
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    
+    window.openLightbox = function(src) {
+        lightboxImg.src = src;
+        lightbox.style.display = 'flex';
+    }
+    
+    document.querySelector('.close-lightbox').onclick = function() {
+        lightbox.style.display = 'none';
+    }
+    
+    lightbox.onclick = function(e) {
+        if (e.target === lightbox) {
+            lightbox.style.display = 'none';
+        }
+    }
+    
+    renderGallery();
+</script>
+
+<!-- Add chatbot code here (paste before </body>) -->
+</body>
+</html>
