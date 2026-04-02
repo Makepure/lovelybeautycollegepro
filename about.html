@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>About Us – Lovely Beauty College | 28+ Years of Excellence</title>
+    <meta name="description" content="Lovely Beauty College has trained over 5,000 graduates across Ethiopia with professional beauty skills since 1996.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.5; color: #1a1a2e; background-color: #fff; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        h1 { font-size: 2.5rem; margin-bottom: 16px; }
+        h2 { font-size: 2rem; margin-bottom: 16px; }
+        h3 { font-size: 1.25rem; margin-bottom: 8px; }
+        
+        .section-title { text-align: center; margin-bottom: 48px; }
+        .section-title h1 { color: #9b2d6e; margin-bottom: 12px; }
+        
+        .btn-primary {
+            background-color: #9b2d6e;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover { background-color: #7a2356; transform: translateY(-2px); }
+        
+        /* Header same as before */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            flex-wrap: wrap;
+        }
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #9b2d6e;
+        }
+        .logo span { font-weight: 400; color: #333; }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a2e;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #9b2d6e; }
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        /* About sections */
+        .about-hero {
+            background: linear-gradient(135deg, #fdf2f8 0%, #f8e6f0 100%);
+            padding: 60px 0;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        .about-text p { margin-bottom: 20px; color: #444; }
+        .about-image img { width: 100%; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        
+        .mission-vision {
+            padding: 80px 0;
+            background: #fef9fc;
+        }
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .mv-card {
+            background: white;
+            padding: 32px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .mv-card i { font-size: 2.5rem; color: #9b2d6e; margin-bottom: 16px; }
+        
+        .stats-about {
+            background: white;
+            padding: 60px 0;
+        }
+        .stats-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 32px;
+            text-align: center;
+        }
+        .stat-item h3 { font-size: 2.2rem; color: #9b2d6e; margin-bottom: 8px; }
+        
+        .faculty {
+            padding: 80px 0;
+            background: #fef9fc;
+        }
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .faculty-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            text-align: center;
+            padding: 24px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .faculty-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 16px;
+        }
+        .faculty-card h3 { color: #9b2d6e; }
+        .faculty-card p { color: #666; font-size: 0.9rem; }
+        
+        footer {
+            background-color: #1a1a2e;
+            color: #ccc;
+            padding: 48px 0 24px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h3 { color: white; margin-bottom: 20px; }
+        .footer-col p, .footer-col a { color: #bbb; text-decoration: none; line-height: 1.8; }
+        .footer-col a:hover { color: #9b2d6e; }
+        .social-links a { display: inline-block; margin-right: 15px; font-size: 1.3rem; }
+        .copyright { text-align: center; padding-top: 24px; border-top: 1px solid #333; font-size: 0.9rem; }
+        
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 16px;
+                padding: 20px 0;
+            }
+            .nav-links.active { display: flex; }
+            .about-grid, .mv-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo"><a href="index.html">Lovely Beauty <span>College</span></a></div>
+            <button class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="branches.html">Branches</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h1>28+ Years of Beauty Education Excellence</h1>
+                    <p>Founded in 1996, Lovely Beauty College has been at the forefront of beauty education in Ethiopia, transforming passionate individuals into successful beauty professionals.</p>
+                    <p>We believe that beauty education goes beyond techniques - it's about building confidence, creativity, and a successful career. Our comprehensive programs combine theoretical knowledge with extensive hands-on training.</p>
+                    <a href="courses.html" class="btn-primary">Explore Programs →</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://placehold.co/500x400/fdf2f8/9b2d6e?text=Beauty+Training+Center" alt="Lovely Beauty College Campus">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="stats-about">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item"><h3>28+</h3><p>Years of Experience</p></div>
+                <div class="stat-item"><h3>5</h3><p>Branches</p></div>
+                <div class="stat-item"><h3>5000+</h3><p>Happy Graduates</p></div>
+                <div class="stat-item"><h3>100%</h3><p>Practical Training</p></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="mission-vision">
+        <div class="container">
+            <div class="mv-grid">
+                <div class="mv-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h2>Our Mission</h2>
+                    <p>To provide world-class beauty education that empowers students with skills, confidence, and entrepreneurial spirit to excel in the beauty industry and create sustainable livelihoods.</p>
+                </div>
+                <div class="mv-card">
+                    <i class="fas fa-eye"></i>
+                    <h2>Our Vision</h2>
+                    <p>To be the leading beauty education institution in Ethiopia and East Africa, recognized globally for excellence in training and innovation in beauty techniques.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="faculty">
+        <div class="container">
+            <div class="section-title">
+                <h1>Meet Our Expert Faculty</h1>
+                <p>Learn from the best in the beauty industry</p>
+            </div>
+            <div class="faculty-grid">
+                <div class="faculty-card">
+                    <img src="https://placehold.co/150x150/fdf2f8/9b2d6e?text=Trainer" alt="Trainer">
+                    <h3>Fasil Michael</h3>
+                    <p>Founder & Senior Trainer</p>
+                    <p>28+ years experience</p>
+                </div>
+                <div class="faculty-card">
+                    <img src="https://placehold.co/150x150/fdf2f8/9b2d6e?text=Makeup" alt="Makeup Trainer">
+                    <h3>Hiwot Alemu</h3>
+                    <p>Makeup Department Head</p>
+                    <p>Certified international artist</p>
+                </div>
+                <div class="faculty-card">
+                    <img src="https://placehold.co/150x150/fdf2f8/9b2d6e?text=Hair" alt="Hair Trainer">
+                    <h3>Meron Tsegaye</h3>
+                    <p>Hair Styling Expert</p>
+                    <p>Award-winning stylist</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Lovely Beauty College</h3>
+                <p>Empowering youth with professional beauty skills since 1996.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="courses.html">Courses</a></p>
+                <p><a href="branches.html">Branches</a></p>
+                <p><a href="contact.html">Contact</a></p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> +251 99 826 1099</p>
+                <p><i class="fas fa-envelope"></i> info@lovelybeauty.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Lovely Beauty College. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+</script>
+
+</body>
+</html>
