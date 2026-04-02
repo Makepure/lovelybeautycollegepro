@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Our Branches – Lovely Beauty College</title>
+    <meta name="description" content="Lovely Beauty College has 5 convenient branches across Addis Ababa: Megenagna, Arada, Merkato, Gofa, and Main Training Center.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            color: #1a1a2e;
+            background-color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 16px; }
+        h2 { font-size: 2rem; margin-bottom: 12px; }
+        h3 { font-size: 1.25rem; margin-bottom: 8px; }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .section-title h1 {
+            color: #9b2d6e;
+            margin-bottom: 12px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            font-family: inherit;
+        }
+        
+        .btn-primary {
+            background-color: #9b2d6e;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #7a2356;
+            transform: translateY(-2px);
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            flex-wrap: wrap;
+        }
+        
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #9b2d6e;
+        }
+        
+        .logo span {
+            font-weight: 400;
+            color: #333;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a2e;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #9b2d6e;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        /* Branches Grid */
+        .branches-section {
+            padding: 60px 0;
+        }
+        
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .branch-card {
+            background: #fef9fc;
+            border-radius: 20px;
+            padding: 24px;
+            transition: transform 0.3s;
+            border: 1px solid #f0e0e8;
+        }
+        
+        .branch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        
+        .branch-card i {
+            font-size: 2rem;
+            color: #9b2d6e;
+            margin-bottom: 16px;
+        }
+        
+        .branch-card h3 {
+            color: #9b2d6e;
+        }
+        
+        .branch-card p {
+            margin: 12px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .branch-card .phone {
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        
+        /* Map Container */
+        .map-container {
+            background: #f8f8f8;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1a2e;
+            color: #ccc;
+            padding: 48px 0 24px;
+            margin-top: 60px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-col p, .footer-col a {
+            color: #bbb;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        
+        .footer-col a:hover {
+            color: #9b2d6e;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 16px;
+                padding: 20px 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">Lovely Beauty <span>College</span></a>
+            </div>
+            <button class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="branches.html" class="active">Branches</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="branches-section">
+        <div class="container">
+            <div class="section-title">
+                <h1>Our Branches</h1>
+                <p>Visit us at any of our 5 convenient locations across Addis Ababa</p>
+            </div>
+            
+            <div class="branches-grid">
+                <!-- Branch 1: Main / Megenagna -->
+                <div class="branch-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Main Branch (Megenagna)</h3>
+                    <p>መገናኛ, Addis Ababa, Ethiopia 1000</p>
+                    <p class="phone"><i class="fas fa-phone"></i> +251 99 826 1099</p>
+                </div>
+                
+                <!-- Branch 2: Arada (placeholder) -->
+                <div class="branch-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Arada Branch</h3>
+                    <p>Arada district, near the post office, Addis Ababa</p>
+                    <p class="phone"><i class="fas fa-phone"></i> +251 91 234 5678</p>
+                </div>
+                
+                <!-- Branch 3: Merkato (placeholder) -->
+                <div class="branch-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Merkato Branch</h3>
+                    <p>Merkato area, behind the main market, Addis Ababa</p>
+                    <p class="phone"><i class="fas fa-phone"></i> +251 92 345 6789</p>
+                </div>
+                
+                <!-- Branch 4: Gofa (placeholder) -->
+                <div class="branch-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Gofa Branch</h3>
+                    <p>Gofa district, near the bus station, Addis Ababa</p>
+                    <p class="phone"><i class="fas fa-phone"></i> +251 93 456 7890</p>
+                </div>
+                
+                <!-- Branch 5: Additional Training Center (placeholder) -->
+                <div class="branch-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Training Center</h3>
+                    <p>Bole Road, near Atlas, Addis Ababa</p>
+                    <p class="phone"><i class="fas fa-phone"></i> +251 94 567 8901</p>
+                </div>
+            </div>
+            
+            <!-- Google Map showing all branches (approximate locations in Addis) -->
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125919.24389525497!2d38.70493455!3d9.0245045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cef5ab402d%3A0x5a6c133e0e6f8a2f!2sMegenagna%2C%20Addis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+            <p style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: #666;">
+                <i class="fas fa-info-circle"></i> Map shows approximate locations. Contact us for exact directions.
+            </p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Lovely Beauty College</h3>
+                <p>Empowering youth with professional beauty skills since 1996.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="courses.html">Courses</a></p>
+                <p><a href="branches.html">Branches</a></p>
+                <p><a href="contact.html">Contact</a></p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> +251 99 826 1099</p>
+                <p><i class="fas fa-envelope"></i> info@lovelybeauty.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Lovely Beauty College. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+    
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>
