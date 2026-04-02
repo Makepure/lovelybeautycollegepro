@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog – Lovely Beauty College</title>
+    <meta name="description" content="Latest news, beauty tips, and success stories from Lovely Beauty College">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.5; color: #1a1a2e; background: #fff; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        h1 { font-size: 2.5rem; margin-bottom: 16px; }
+        h2 { font-size: 1.8rem; margin-bottom: 12px; }
+        
+        .section-title { text-align: center; margin-bottom: 48px; }
+        .section-title h1 { color: #9b2d6e; margin-bottom: 12px; }
+        
+        .btn-primary {
+            background-color: #9b2d6e;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover { background-color: #7a2356; transform: translateY(-2px); }
+        .btn-outline { border: 2px solid #9b2d6e; color: #9b2d6e; background: transparent; padding: 8px 20px; border-radius: 40px; text-decoration: none; font-weight: 500; display: inline-block; transition: all 0.3s; }
+        .btn-outline:hover { background-color: #9b2d6e; color: white; }
+        
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            flex-wrap: wrap;
+        }
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #9b2d6e;
+        }
+        .logo span { font-weight: 400; color: #333; }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a2e;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #9b2d6e; }
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        .blog-section {
+            padding: 60px 0;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            border: 1px solid #f0e0e8;
+        }
+        .blog-card:hover { transform: translateY(-8px); }
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .blog-content { padding: 24px; }
+        .blog-date {
+            color: #9b2d6e;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .blog-content h3 { margin-bottom: 12px; }
+        .blog-content p { color: #555; margin-bottom: 16px; }
+        
+        footer {
+            background-color: #1a1a2e;
+            color: #ccc;
+            padding: 48px 0 24px;
+            margin-top: 60px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h3 { color: white; margin-bottom: 20px; }
+        .footer-col p, .footer-col a { color: #bbb; text-decoration: none; line-height: 1.8; }
+        .footer-col a:hover { color: #9b2d6e; }
+        .social-links a { display: inline-block; margin-right: 15px; font-size: 1.3rem; }
+        .copyright { text-align: center; padding-top: 24px; border-top: 1px solid #333; font-size: 0.9rem; }
+        
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 16px;
+                padding: 20px 0;
+            }
+            .nav-links.active { display: flex; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo"><a href="index.html">Lovely Beauty <span>College</span></a></div>
+            <button class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="branches.html">Branches</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="blog-section">
+        <div class="container">
+            <div class="section-title">
+                <h1>Latest News & Tips</h1>
+                <p>Beauty trends, success stories, and college updates</p>
+            </div>
+            
+            <div class="blog-grid" id="blogContainer">
+                <!-- Blog posts load here -->
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Lovely Beauty College</h3>
+                <p>Empowering youth with professional beauty skills since 1996.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="courses.html">Courses</a></p>
+                <p><a href="branches.html">Branches</a></p>
+                <p><a href="contact.html">Contact</a></p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> +251 99 826 1099</p>
+                <p><i class="fas fa-envelope"></i> info@lovelybeauty.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Lovely Beauty College. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+    
+    // Blog data (will be editable via CMS later)
+    const blogPosts = [
+        {
+            id: 1,
+            title: "5 Essential Makeup Tips for Beginners",
+            excerpt: "Start your makeup journey with these professional tips from our expert trainers...",
+            date: "March 15, 2025",
+            image: "https://placehold.co/600x400/fdf2f8/9b2d6e?text=Makeup+Tips"
+        },
+        {
+            id: 2,
+            title: "Why Vocational Training is Key to Youth Employment",
+            excerpt: "Discover how beauty skills are creating jobs for young Ethiopians...",
+            date: "March 10, 2025",
+            image: "https://placehold.co/600x400/fdf2f8/9b2d6e?text=Youth+Employment"
+        },
+        {
+            id: 3,
+            title: "Graduate Success Story: From Trainee to Salon Owner",
+            excerpt: "Meet Almaz, who started her own salon just 6 months after completing our course...",
+            date: "March 5, 2025",
+            image: "https://placehold.co/600x400/fdf2f8/9b2d6e?text=Success+Story"
+        },
+        {
+            id: 4,
+            title: "Nail Art Trends for 2025",
+            excerpt: "Stay ahead with the latest nail designs and techniques taught at our college...",
+            date: "February 28, 2025",
+            image: "https://placehold.co/600x400/fdf2f8/9b2d6e?text=Nail+Art"
+        }
+    ];
+    
+    const blogContainer = document.getElementById('blogContainer');
+    
+    function renderBlog() {
+        blogContainer.innerHTML = blogPosts.map(post => `
+            <div class="blog-card">
+                <img class="blog-image" src="${post.image}" alt="${post.title}">
+                <div class="blog-content">
+                    <span class="blog-date"><i class="far fa-calendar-alt"></i> ${post.date}</span>
+                    <h3>${post.title}</h3>
+                    <p>${post.excerpt}</p>
+                    <a href="#" class="btn-outline">Read More →</a>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    renderBlog();
+</script>
+
+<!-- Add chatbot code here (same as before, paste before </body>) -->
+</body>
+</html>
