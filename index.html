@@ -385,6 +385,133 @@
 </header>
 
 <main>
+        <!-- ========== SEARCH MODAL ========== -->
+    <style>
+    .search-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.9);
+        z-index: 2001;
+        justify-content: center;
+        align-items: center;
+    }
+    .search-modal-content {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 600px;
+        position: relative;
+    }
+    .search-modal-content input {
+        width: 100%;
+        padding: 16px;
+        font-size: 1.2rem;
+        border: 2px solid #9b2d6e;
+        border-radius: 40px;
+        margin-bottom: 20px;
+        font-family: inherit;
+    }
+    .search-results {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .search-result-item {
+        padding: 12px;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+    }
+    .search-result-item:hover {
+        background: #fef9fc;
+    }
+    .close-search {
+        float: right;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #999;
+    }
+    .close-search:hover {
+        color: #9b2d6e;
+    }
+    </style>
+
+    <div id="searchModal" class="search-modal">
+        <div class="search-modal-content">
+            <span class="close-search">&times;</span>
+            <h3 style="margin-bottom: 20px;">Search Website</h3>
+            <input type="text" id="searchInput" placeholder="Type to search...">
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </div>
+
+    <script>
+    const searchModal = document.getElementById('searchModal');
+    const searchIcon = document.getElementById('searchIcon');
+    const closeSearch = document.querySelector('.close-search');
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    const pagesToSearch = [
+        { title: "Home", url: "index.html", content: "home beauty college training courses" },
+        { title: "About Us", url: "about.html", content: "about mission vision faculty history 28 years" },
+        { title: "Courses", url: "courses.html", content: "courses hairdressing makeup nail skincare entrepreneurship" },
+        { title: "Branches", url: "branches.html", content: "branches locations addis ababa megenagna arada merkato gofa" },
+        { title: "Contact", url: "contact.html", content: "contact phone email address form" },
+        { title: "Blog", url: "blog.html", content: "blog news tips articles beauty" },
+        { title: "Gallery", url: "gallery.html", content: "gallery photos images training" }
+    ];
+
+    if (searchIcon) {
+        searchIcon.addEventListener('click', (e) => {
+            e.preventDefault();
+            searchModal.style.display = 'flex';
+            searchInput.focus();
+        });
+    }
+
+    if (closeSearch) {
+        closeSearch.addEventListener('click', () => {
+            searchModal.style.display = 'none';
+        });
+    }
+
+    searchModal.addEventListener('click', (e) => {
+        if (e.target === searchModal) {
+            searchModal.style.display = 'none';
+        }
+    });
+
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (query.length < 2) {
+                searchResults.innerHTML = '';
+                return;
+            }
+            
+            const results = pagesToSearch.filter(page => 
+                page.title.toLowerCase().includes(query) || 
+                page.content.toLowerCase().includes(query)
+            );
+            
+            if (results.length === 0) {
+                searchResults.innerHTML = '<p style="color: #666;">No results found. Try a different word.</p>';
+            } else {
+                searchResults.innerHTML = results.map(result => `
+                    <div class="search-result-item" onclick="window.location.href='${result.url}'">
+                        <strong>📄 ${result.title}</strong><br>
+                        <small style="color: #9b2d6e;">Click to visit →</small>
+                    </div>
+                `).join('');
+            }
+        });
+    }
+    </script>
+    <!-- ========== END SEARCH MODAL ========== -->
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
