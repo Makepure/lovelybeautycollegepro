@@ -1,75 +1,72 @@
-// Load courses from markdown files
-async function loadCourses() {
-    try {
-        const response = await fetch('/content/courses.json');
-        if (!response.ok) throw new Error('Courses not found');
-        const courses = await response.json();
-        return courses;
-    } catch (error) {
-        console.log('Loading individual course files...');
-        
-        // Fallback: Try to load each .md file
-        const courseFiles = [
-            'professional-hairdressing'
-        ];
-        
-        const courses = [];
-        for (const file of courseFiles) {
-            try {
-                const mdResponse = await fetch(`/content/courses/${file}.md`);
-                if (mdResponse.ok) {
-                    const mdText = await mdResponse.text();
-                    // Parse frontmatter (simplified)
-                    const titleMatch = mdText.match(/title: "(.+?)"/);
-                    const descMatch = mdText.match(/description: "(.+?)"/);
-                    const durationMatch = mdText.match(/duration: "(.+?)"/);
-                    const youtubeMatch = mdText.match(/youtube: "(.+?)"/);
-                    
-                    if (titleMatch) {
-                        courses.push({
-                            id: courses.length + 1,
-                            title: titleMatch[1],
-                            description: descMatch ? descMatch[1] : '',
-                            duration: durationMatch ? durationMatch[1] : '',
-                            youtubeUrl: youtubeMatch ? youtubeMatch[1] : '',
-                            thumbnail: "https://placehold.co/600x338/fdf2f8/9b2d6e?text=Course+Video"
-                        });
-                    }
-                }
-            } catch (err) {
-                console.log(`Could not load ${file}`);
-            }
-        }
-        return courses;
+// Sample course data
+const courses = [
+    {
+        id: 1,
+        title: "Professional Hairdressing",
+        description: "Complete hairdressing training including cutting, styling, coloring, hair treatments, and salon management.",
+        duration: "3-6 months",
+        youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        thumbnail: "https://placehold.co/600x338/fdf2f8/9b2d6e?text=Hairdressing"
     }
-}
+];
 
-// Render courses
-async function renderCourses() {
+// Render courses to the page
+function renderCourses() {
     const container = document.getElementById('coursesContainer');
     if (!container) return;
     
-    const courses = await loadCourses();
-    
-    if (courses.length === 0) {
-        container.innerHTML = '<p style="text-align:center;">No courses found. Add courses in the CMS!</p>';
-        return;
+    let html = '';
+    for (let i = 0; i < courses.length; i++) {
+        const course = courses[i];
+        html += `
+            <div class="course-card">
+                <div class="course-video">
+                    <img src="${course.thumbnail}" alt="${course.title}" style="width:100%; height:100%; object-fit:cover; cursor:pointer;" onclick="openVideo('${course.youtubeUrl}')">
+                </div>
+                <div class="course-info">
+                    <h3>${course.title}</h3>
+                    <span class="course-duration"><i class="fas fa-clock"></i> ${course.duration}</span>
+                    <p class="course-description">${course.description}</p>
+                    <button class="btn btn-outline" onclick="openVideo('${course.youtubeUrl}')">Watch Preview <i class="fab fa-youtube"></i></button>
+                </div>
+            </div>
+        `;
     }
-    
-    container.innerHTML = courses.map(course => `
-        <div class="course-card">
-            <div class="course-video">
-                <img src="${course.thumbnail}" alt="${course.title}" style="width:100%; height:100%; object-fit:cover; cursor:pointer;" onclick="openVideo('${course.youtubeUrl}')">
-            </div>
-            <div class="course-info">
-                <h3>${course.title}</h3>
-                <span class="course-duration"><i class="fas fa-clock"></i> ${course.duration}</span>
-                <p class="course-description">${course.description}</p>
-                <button class="btn btn-outline" onclick="openVideo('${course.youtubeUrl}')">Watch Preview <i class="fab fa-youtube"></i></button>
-            </div>
-        </div>
-    `).join('');
+    container.innerHTML = html;
 }
 
-// Call render function when page loads
+// Function to open video modal
+window.openVideo = function(url) {
+    const modal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    if (modal && modalVideo) {
+        modalVideo.src = url;
+        modal.style.display = 'flex';
+    }
+}
+
+// Close modal when clicking the X
+const closeModal = document.querySelector('.close-modal');
+if (closeModal) {
+    closeModal.onclick = function() {
+        const modal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideo');
+        if (modal && modalVideo) {
+            modal.style.display = 'none';
+            modalVideo.src = '';
+        }
+    }
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('videoModal');
+    if (event.target === modal && modal) {
+        modal.style.display = 'none';
+        const modalVideo = document.getElementById('modalVideo');
+        if (modalVideo) modalVideo.src = '';
+    }
+}
+
+// Load courses when page is ready
 renderCourses();
