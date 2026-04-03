@@ -1,0 +1,56 @@
+backend:
+  name: github
+  repo: Makepure/lovelybeautycollegepro
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "courses"
+    label: "Courses"
+    folder: "content/courses"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Duration", name: "duration", widget: "string" }
+      - { label: "YouTube URL", name: "youtube", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Image", name: "image", widget: "image" }
+
+  - name: "faq"
+    label: "FAQ Chatbot"
+    folder: "content/faq"
+    create: true
+    fields:
+      - { label: "Question", name: "question", widget: "string" }
+      - { label: "Answer", name: "answer", widget: "text" }
+
+  - name: "branches"
+    label: "Branches"
+    folder: "content/branches"
+    create: true
+    fields:
+      - { label: "Branch Name", name: "name", widget: "string" }
+      - { label: "Address", name: "address", widget: "string" }
+      - { label: "Phone", name: "phone", widget: "string" }
+
+  - name: "faculty"
+    label: "Faculty"
+    folder: "content/faculty"
+    create: true
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Bio", name: "bio", widget: "text" }
+      - { label: "Photo", name: "photo", widget: "image" }
