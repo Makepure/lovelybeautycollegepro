@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses – Lovely Beauty College</title>
+    <meta name="description" content="Professional beauty courses in hairdressing, makeup, nail care, and skincare at Lovely Beauty College.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -67,25 +68,29 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid #f0e0e8;
         }
-        .course-card:hover { transform: translateY(-8px); }
-        .course-video {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
+        .course-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
         }
-        .course-video iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .course-thumbnail {
             width: 100%;
-            height: 100%;
+            height: 220px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .course-thumbnail:hover {
+            transform: scale(1.02);
         }
         .course-info { padding: 24px; }
-        .course-info h3 { color: #9b2d6e; font-size: 1.4rem; margin-bottom: 12px; }
+        .course-info h3 { 
+            color: #9b2d6e; 
+            font-size: 1.4rem; 
+            margin-bottom: 8px;
+        }
         .course-duration {
             display: inline-block;
             background: #fef9fc;
@@ -95,7 +100,11 @@
             color: #9b2d6e;
             margin: 12px 0;
         }
-        .course-description { color: #555; margin-bottom: 20px; }
+        .course-description { 
+            color: #555; 
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
         
         .btn-outline {
             border: 2px solid #9b2d6e;
@@ -103,14 +112,20 @@
             background: transparent;
             padding: 8px 20px;
             border-radius: 40px;
-            text-decoration: none;
             font-weight: 500;
             display: inline-block;
             transition: all 0.3s;
             cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9rem;
         }
-        .btn-outline:hover { background-color: #9b2d6e; color: white; }
+        .btn-outline:hover { 
+            background-color: #9b2d6e; 
+            color: white; 
+            transform: translateY(-2px);
+        }
         
+        /* Video Modal */
         .modal {
             display: none;
             position: fixed;
@@ -118,27 +133,32 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 2000;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
             justify-content: center;
             align-items: center;
         }
         .modal-content {
             position: relative;
             width: 90%;
-            max-width: 800px;
+            max-width: 900px;
         }
         .modal-content iframe {
             width: 100%;
-            height: 450px;
+            height: 500px;
+            border-radius: 12px;
         }
         .close-modal {
             position: absolute;
-            top: -40px;
+            top: -50px;
             right: 0;
             color: white;
             font-size: 2rem;
             cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .close-modal:hover {
+            opacity: 0.7;
         }
         
         footer {
@@ -153,10 +173,11 @@
             gap: 40px;
             margin-bottom: 40px;
         }
-        .footer-col h3 { color: white; margin-bottom: 20px; }
+        .footer-col h3 { color: white; margin-bottom: 20px; font-size: 1.2rem; }
         .footer-col p, .footer-col a { color: #bbb; text-decoration: none; line-height: 1.8; }
         .footer-col a:hover { color: #9b2d6e; }
-        .social-links a { display: inline-block; margin-right: 15px; font-size: 1.3rem; }
+        .social-links a { display: inline-block; margin-right: 15px; font-size: 1.3rem; color: #bbb; }
+        .social-links a:hover { color: #9b2d6e; }
         .copyright { text-align: center; padding-top: 24px; border-top: 1px solid #333; font-size: 0.9rem; }
         
         @media (max-width: 768px) {
@@ -171,6 +192,7 @@
             .nav-links.active { display: flex; }
             h1 { font-size: 2rem; }
             .course-grid { grid-template-columns: 1fr; }
+            .modal-content iframe { height: 300px; }
         }
     </style>
 </head>
@@ -250,7 +272,7 @@
 </footer>
 
 <script>
-    // Mobile menu
+    // ========== MOBILE MENU ==========
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.getElementById('nav-links');
     if (menuToggle) {
@@ -260,19 +282,19 @@
         link.addEventListener('click', () => navLinks.classList.remove('active'));
     });
     
-    // Course data - SIMPLE AND WORKING
+    // ========== COURSE DATA ==========
     const courses = [
         {
             id: 1,
             title: "Professional Hairdressing",
-            description: "Complete hairdressing training including cutting, styling, coloring, hair treatments, and salon management.",
+            description: "Complete hairdressing training including cutting, styling, coloring, hair treatments, and salon management. Perfect for beginners and experienced stylists.",
             duration: "3-6 months",
             youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
             thumbnail: "https://placehold.co/600x338/fdf2f8/9b2d6e?text=Hairdressing"
         }
     ];
     
-    // Display courses
+    // ========== DISPLAY COURSES ==========
     function showCourses() {
         const container = document.getElementById('coursesContainer');
         if (!container) return;
@@ -280,28 +302,29 @@
         let html = '';
         for (let i = 0; i < courses.length; i++) {
             const c = courses[i];
-            html += '<div class="course-card">';
-            html += '<div class="course-video">';
-            html += '<img src="' + c.thumbnail + '" alt="' + c.title + '" style="width:100%; height:100%; object-fit:cover; cursor:pointer;" onclick="openVideo(\'' + c.youtubeUrl + '\')">';
-            html += '</div>';
-            html += '<div class="course-info">';
-            html += '<h3>' + c.title + '</h3>';
-            html += '<span class="course-duration"><i class="fas fa-clock"></i> ' + c.duration + '</span>';
-            html += '<p class="course-description">' + c.description + '</p>';
-            html += '<button class="btn-outline" onclick="openVideo(\'' + c.youtubeUrl + '\')">Watch Preview <i class="fab fa-youtube"></i></button>';
-            html += '</div>';
-            html += '</div>';
+            html += `
+                <div class="course-card">
+                    <img class="course-thumbnail" src="${c.thumbnail}" alt="${c.title}" onclick="openVideo('${c.youtubeUrl}')">
+                    <div class="course-info">
+                        <h3>${c.title}</h3>
+                        <span class="course-duration"><i class="fas fa-clock"></i> ${c.duration}</span>
+                        <p class="course-description">${c.description}</p>
+                        <button class="btn-outline" onclick="openVideo('${c.youtubeUrl}')"><i class="fab fa-youtube"></i> Watch Preview</button>
+                    </div>
+                </div>
+            `;
         }
         container.innerHTML = html;
     }
     
-    // Video modal functions
+    // ========== VIDEO MODAL ==========
     window.openVideo = function(url) {
         const modal = document.getElementById('videoModal');
         const modalVideo = document.getElementById('modalVideo');
         if (modal && modalVideo) {
             modalVideo.src = url;
             modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
     }
     
@@ -311,14 +334,17 @@
         if (modal && modalVideo) {
             modal.style.display = 'none';
             modalVideo.src = '';
+            document.body.style.overflow = '';
         }
     }
     
+    // Close button
     const closeBtn = document.querySelector('.close-modal');
     if (closeBtn) {
         closeBtn.onclick = closeVideoModal;
     }
     
+    // Click outside to close
     window.onclick = function(event) {
         const modal = document.getElementById('videoModal');
         if (event.target === modal && modal) {
@@ -326,12 +352,16 @@
         }
     }
     
-    // Load courses
+    // ESC key to close
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeVideoModal();
+        }
+    });
+    
+    // ========== LOAD COURSES ==========
     showCourses();
 </script>
-
-<!-- Search Modal (add your search modal code here if needed) -->
-<!-- FAQ Chatbot (add your chatbot code here if needed) -->
 
 </body>
 </html>
