@@ -1,54 +1,311 @@
-// Sample course data
-const courses = [
-    {
-        id: 1,
-        title: "Professional Hairdressing",
-        description: "Complete hairdressing training including cutting, styling, coloring, hair treatments, and salon management.",
-        duration: "3-6 months",
-        youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        thumbnail: "https://placehold.co/600x338/fdf2f8/9b2d6e?text=Hairdressing"
-    }
-];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses – Lovely Beauty College</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.5; color: #1a1a2e; background: #fff; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        h1 { font-size: 2.5rem; margin-bottom: 16px; }
+        .section-title { text-align: center; margin-bottom: 48px; }
+        .section-title h1 { color: #9b2d6e; margin-bottom: 12px; }
+        
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            flex-wrap: wrap;
+        }
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #9b2d6e;
+        }
+        .logo span { font-weight: 400; color: #333; }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a2e;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #9b2d6e; }
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        .courses-section { padding: 60px 0; }
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .course-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            border: 1px solid #f0e0e8;
+        }
+        .course-card:hover { transform: translateY(-8px); }
+        .course-video {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .course-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .course-info { padding: 24px; }
+        .course-info h3 { color: #9b2d6e; font-size: 1.4rem; margin-bottom: 12px; }
+        .course-duration {
+            display: inline-block;
+            background: #fef9fc;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #9b2d6e;
+            margin: 12px 0;
+        }
+        .course-description { color: #555; margin-bottom: 20px; }
+        
+        .btn-outline {
+            border: 2px solid #9b2d6e;
+            color: #9b2d6e;
+            background: transparent;
+            padding: 8px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .btn-outline:hover { background-color: #9b2d6e; color: white; }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+        }
+        .modal-content iframe {
+            width: 100%;
+            height: 450px;
+        }
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        footer {
+            background-color: #1a1a2e;
+            color: #ccc;
+            padding: 48px 0 24px;
+            margin-top: 60px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h3 { color: white; margin-bottom: 20px; }
+        .footer-col p, .footer-col a { color: #bbb; text-decoration: none; line-height: 1.8; }
+        .footer-col a:hover { color: #9b2d6e; }
+        .social-links a { display: inline-block; margin-right: 15px; font-size: 1.3rem; }
+        .copyright { text-align: center; padding-top: 24px; border-top: 1px solid #333; font-size: 0.9rem; }
+        
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 16px;
+                padding: 20px 0;
+            }
+            .nav-links.active { display: flex; }
+            h1 { font-size: 2rem; }
+            .course-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
 
-// Render courses to the page
-function renderCourses() {
-    const container = document.getElementById('coursesContainer');
-    if (!container) return;
-    
-    let html = '';
-    for (let i = 0; i < courses.length; i++) {
-        const course = courses[i];
-        html += `
-            <div class="course-card">
-                <div class="course-video">
-                    <img src="${course.thumbnail}" alt="${course.title}" style="width:100%; height:100%; object-fit:cover; cursor:pointer;" onclick="openVideo('${course.youtubeUrl}')">
-                </div>
-                <div class="course-info">
-                    <h3>${course.title}</h3>
-                    <span class="course-duration"><i class="fas fa-clock"></i> ${course.duration}</span>
-                    <p class="course-description">${course.description}</p>
-                    <button class="btn btn-outline" onclick="openVideo('${course.youtubeUrl}')">Watch Preview <i class="fab fa-youtube"></i></button>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo"><a href="index.html">Lovely Beauty <span>College</span></a></div>
+            <button class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
+                <li><a href="branches.html">Branches</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#" id="searchIcon"><i class="fas fa-search"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="courses-section">
+        <div class="container">
+            <div class="section-title">
+                <h1>Our Professional Courses</h1>
+                <p>Hands-on training designed to make you industry-ready</p>
+            </div>
+            <div class="course-grid" id="coursesContainer">
+                <!-- Courses will be loaded here -->
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Video Modal -->
+<div id="videoModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <iframe id="modalVideo" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Lovely Beauty College</h3>
+                <p>Empowering youth with professional beauty skills since 1996.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
                 </div>
             </div>
-        `;
-    }
-    container.innerHTML = html;
-}
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="courses.html">Courses</a></p>
+                <p><a href="branches.html">Branches</a></p>
+                <p><a href="contact.html">Contact</a></p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> +251 99 826 1099</p>
+                <p><i class="fas fa-envelope"></i> info@lovelybeauty.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Lovely Beauty College. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
-// Function to open video modal
-window.openVideo = function(url) {
-    const modal = document.getElementById('videoModal');
-    const modalVideo = document.getElementById('modalVideo');
-    if (modal && modalVideo) {
-        modalVideo.src = url;
-        modal.style.display = 'flex';
+<script>
+    // Mobile menu
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
     }
-}
-
-// Close modal when clicking the X
-const closeModal = document.querySelector('.close-modal');
-if (closeModal) {
-    closeModal.onclick = function() {
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+    
+    // Course data - SIMPLE AND WORKING
+    const courses = [
+        {
+            id: 1,
+            title: "Professional Hairdressing",
+            description: "Complete hairdressing training including cutting, styling, coloring, hair treatments, and salon management.",
+            duration: "3-6 months",
+            youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            thumbnail: "https://placehold.co/600x338/fdf2f8/9b2d6e?text=Hairdressing"
+        }
+    ];
+    
+    // Display courses
+    function showCourses() {
+        const container = document.getElementById('coursesContainer');
+        if (!container) return;
+        
+        let html = '';
+        for (let i = 0; i < courses.length; i++) {
+            const c = courses[i];
+            html += '<div class="course-card">';
+            html += '<div class="course-video">';
+            html += '<img src="' + c.thumbnail + '" alt="' + c.title + '" style="width:100%; height:100%; object-fit:cover; cursor:pointer;" onclick="openVideo(\'' + c.youtubeUrl + '\')">';
+            html += '</div>';
+            html += '<div class="course-info">';
+            html += '<h3>' + c.title + '</h3>';
+            html += '<span class="course-duration"><i class="fas fa-clock"></i> ' + c.duration + '</span>';
+            html += '<p class="course-description">' + c.description + '</p>';
+            html += '<button class="btn-outline" onclick="openVideo(\'' + c.youtubeUrl + '\')">Watch Preview <i class="fab fa-youtube"></i></button>';
+            html += '</div>';
+            html += '</div>';
+        }
+        container.innerHTML = html;
+    }
+    
+    // Video modal functions
+    window.openVideo = function(url) {
+        const modal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideo');
+        if (modal && modalVideo) {
+            modalVideo.src = url;
+            modal.style.display = 'flex';
+        }
+    }
+    
+    function closeVideoModal() {
         const modal = document.getElementById('videoModal');
         const modalVideo = document.getElementById('modalVideo');
         if (modal && modalVideo) {
@@ -56,17 +313,25 @@ if (closeModal) {
             modalVideo.src = '';
         }
     }
-}
-
-// Close modal when clicking outside
-window.onclick = function(event) {
-    const modal = document.getElementById('videoModal');
-    if (event.target === modal && modal) {
-        modal.style.display = 'none';
-        const modalVideo = document.getElementById('modalVideo');
-        if (modalVideo) modalVideo.src = '';
+    
+    const closeBtn = document.querySelector('.close-modal');
+    if (closeBtn) {
+        closeBtn.onclick = closeVideoModal;
     }
-}
+    
+    window.onclick = function(event) {
+        const modal = document.getElementById('videoModal');
+        if (event.target === modal && modal) {
+            closeVideoModal();
+        }
+    }
+    
+    // Load courses
+    showCourses();
+</script>
 
-// Load courses when page is ready
-renderCourses();
+<!-- Search Modal (add your search modal code here if needed) -->
+<!-- FAQ Chatbot (add your chatbot code here if needed) -->
+
+</body>
+</html>
