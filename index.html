@@ -2,18 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Lovely Beauty College – Professional Beauty Training Since 1996</title>
-    <meta name="description" content="Lovely Beauty College offers professional hairdressing, makeup, nail care, and skincare training across 5 branches in Addis Ababa. 28+ years of experience. Enroll today!">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lovely Beauty College – Professional Beauty Training Since 1998</title>
+    <meta name="description" content="Lovely Beauty College offers professional hairdressing, makeup, nail care, and skincare training. 28+ years of excellence in Ethiopia.">
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome 6 (free icons) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* ========== RESET & BASE ========== */
         * {
             margin: 0;
             padding: 0;
@@ -23,8 +19,8 @@
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.5;
-            color: #1a1a2e;
-            background-color: #fff;
+            color: #ffffff;
+            background: #0a0a0a;
         }
         
         .container {
@@ -33,16 +29,16 @@
             padding: 0 24px;
         }
         
-        /* ========== TYPOGRAPHY ========== */
+        /* ========== BLACK & GOLD THEME ========== */
         h1, h2, h3 {
-            font-weight: 600;
+            font-weight: 700;
             line-height: 1.2;
             margin-bottom: 16px;
         }
         
-        h1 { font-size: 2.5rem; }
-        h2 { font-size: 2rem; margin-top: 8px; }
-        h3 { font-size: 1.25rem; }
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.2rem; margin-top: 8px; }
+        h3 { font-size: 1.3rem; }
         
         .section-title {
             text-align: center;
@@ -50,19 +46,25 @@
         }
         
         .section-title h2 {
-            color: #9b2d6e;
+            color: #FFD700;
             margin-bottom: 12px;
+            position: relative;
+            display: inline-block;
         }
         
-        .section-title p {
-            color: #555;
-            font-size: 1.1rem;
+        .section-title h2::before,
+        .section-title h2::after {
+            content: '✦';
+            color: #FFD700;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            margin: 0 15px;
         }
         
         /* ========== BUTTONS ========== */
         .btn {
             display: inline-block;
-            padding: 12px 28px;
+            padding: 14px 32px;
             border-radius: 40px;
             font-weight: 600;
             text-decoration: none;
@@ -73,33 +75,36 @@
         }
         
         .btn-primary {
-            background-color: #9b2d6e;
-            color: white;
+            background: linear-gradient(135deg, #FFD700 0%, #DAA520 100%);
+            color: #0a0a0a;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.3);
         }
         
         .btn-primary:hover {
-            background-color: #7a2356;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,215,0,0.4);
         }
         
         .btn-outline {
-            border: 2px solid #9b2d6e;
-            color: #9b2d6e;
+            border: 2px solid #FFD700;
+            color: #FFD700;
             background: transparent;
         }
         
         .btn-outline:hover {
-            background-color: #9b2d6e;
-            color: white;
+            background-color: #FFD700;
+            color: #0a0a0a;
+            transform: translateY(-3px);
         }
         
         /* ========== HEADER & NAVIGATION ========== */
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(255,215,0,0.2);
         }
         
         .navbar {
@@ -110,16 +115,53 @@
             flex-wrap: wrap;
         }
         
+        /* ========== ANIMATED LOGO ========== */
         .logo a {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 800;
             text-decoration: none;
-            color: #9b2d6e;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
         }
         
-        .logo span {
-            font-weight: 400;
-            color: #333;
+        .logo .main {
+            color: #FFD700;
+            animation: goldGlow 3s ease-in-out infinite;
+            letter-spacing: 1px;
+        }
+        
+        .logo .sub {
+            font-size: 0.7rem;
+            color: #ccc;
+            letter-spacing: 2px;
+        }
+        
+        @keyframes goldGlow {
+            0% {
+                text-shadow: 0 0 0px rgba(255,215,0,0);
+                transform: scale(1);
+            }
+            50% {
+                text-shadow: 0 0 15px rgba(255,215,0,0.8), 0 0 30px rgba(255,215,0,0.4);
+                transform: scale(1.02);
+            }
+            100% {
+                text-shadow: 0 0 0px rgba(255,215,0,0);
+                transform: scale(1);
+            }
+        }
+        
+        .logo a::before {
+            content: '✨';
+            display: inline-block;
+            animation: sparkle 2s ease-in-out infinite;
+            margin-right: 5px;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.5; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
         
         .nav-links {
@@ -130,14 +172,14 @@
         
         .nav-links a {
             text-decoration: none;
-            color: #1a1a2e;
+            color: #ffffff;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
         }
         
         .nav-links a:hover,
         .nav-links a.active {
-            color: #9b2d6e;
+            color: #FFD700;
         }
         
         .menu-toggle {
@@ -146,15 +188,52 @@
             cursor: pointer;
             background: none;
             border: none;
+            color: #FFD700;
         }
         
         /* ========== HERO SECTION ========== */
         .hero {
-            background: linear-gradient(135deg, #fdf2f8 0%, #f8e6f0 100%);
-            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2a 50%, #0a0a0a 100%);
+            padding: 80px 0;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23FFD700" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>');
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .hero::after {
+            content: '✦';
+            position: absolute;
+            top: 15%;
+            right: 8%;
+            font-size: 5rem;
+            color: #FFD700;
+            opacity: 0.15;
+            font-family: monospace;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
         
         .hero .container {
+            position: relative;
+            z-index: 2;
             display: flex;
             align-items: center;
             gap: 48px;
@@ -166,18 +245,18 @@
         }
         
         .hero-content h1 {
-            font-size: 3rem;
-            color: #1a1a2e;
+            font-size: 3.2rem;
             margin-bottom: 20px;
         }
         
         .hero-content .highlight {
-            color: #9b2d6e;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255,215,0,0.5);
         }
         
         .hero-content p {
             font-size: 1.2rem;
-            color: #444;
+            color: #ccc;
             margin-bottom: 32px;
         }
         
@@ -195,14 +274,16 @@
         .hero-image img {
             max-width: 100%;
             border-radius: 20px;
-            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,215,0,0.3);
         }
         
-        /* ========== FEATURES / STATS ========== */
+        /* ========== STATS SECTION ========== */
         .stats {
-            background-color: white;
+            background: linear-gradient(135deg, #0f0f1a 0%, #0a0a0a 100%);
             padding: 60px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(255,215,0,0.2);
+            border-top: 1px solid rgba(255,215,0,0.2);
         }
         
         .stats-grid {
@@ -214,65 +295,89 @@
         }
         
         .stat-item h3 {
-            font-size: 2.2rem;
-            color: #9b2d6e;
+            font-size: 2.5rem;
+            color: #FFD700;
             margin-bottom: 8px;
         }
         
         .stat-item p {
-            color: #555;
-            font-weight: 500;
+            color: #ccc;
         }
         
-        /* ========== COURSES PREVIEW ========== */
+        /* ========== COURSES SECTION ========== */
         .courses {
             padding: 80px 0;
-            background-color: #fef9fc;
+            background: #0a0a0a;
+            position: relative;
+        }
+        
+        .courses::before {
+            content: '✦';
+            position: absolute;
+            top: 5%;
+            left: 3%;
+            font-size: 4rem;
+            color: #FFD700;
+            opacity: 0.08;
+            font-family: monospace;
+        }
+        
+        .courses::after {
+            content: '✦';
+            position: absolute;
+            bottom: 5%;
+            right: 3%;
+            font-size: 5rem;
+            color: #FFD700;
+            opacity: 0.08;
+            font-family: monospace;
         }
         
         .course-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
+            position: relative;
+            z-index: 2;
         }
         
         .course-card {
-            background: white;
+            background: rgba(20,20,30,0.8);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            border: 1px solid rgba(255,215,0,0.2);
+            transition: all 0.3s;
         }
         
         .course-card:hover {
             transform: translateY(-8px);
+            border-color: rgba(255,215,0,0.5);
+            box-shadow: 0 15px 35px rgba(255,215,0,0.1);
         }
         
         .course-card img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
         }
         
         .course-card h3 {
+            color: #FFD700;
             padding: 20px 20px 10px;
         }
         
         .course-card p {
             padding: 0 20px 20px;
-            color: #555;
-        }
-        
-        .course-card .btn-small {
-            margin: 0 20px 20px;
-            display: inline-block;
+            color: #ccc;
         }
         
         /* ========== FOOTER ========== */
         footer {
-            background-color: #1a1a2e;
+            background: #050505;
             color: #ccc;
             padding: 48px 0 24px;
+            border-top: 1px solid rgba(255,215,0,0.2);
         }
         
         .footer-grid {
@@ -283,7 +388,7 @@
         }
         
         .footer-col h3 {
-            color: white;
+            color: #FFD700;
             margin-bottom: 20px;
             font-size: 1.2rem;
         }
@@ -295,19 +400,26 @@
         }
         
         .footer-col a:hover {
-            color: #9b2d6e;
+            color: #FFD700;
         }
         
         .social-links a {
             display: inline-block;
             margin-right: 15px;
             font-size: 1.3rem;
+            color: #FFD700;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: #fff;
         }
         
         .copyright {
             text-align: center;
             padding-top: 24px;
-            border-top: 1px solid #333;
+            border-top: 1px solid rgba(255,215,0,0.2);
             font-size: 0.9rem;
         }
         
@@ -345,12 +457,6 @@
             .section-title h2 {
                 font-size: 1.8rem;
             }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
             
             .stats-grid {
                 flex-direction: column;
@@ -364,178 +470,51 @@
     <div class="container">
         <div class="navbar">
             <div class="logo">
-                <a href="index.html">Lovely Beauty <span>College</span></a>
+                <a href="index.html">
+                    <span class="main">LOVELY BEAUTY COLLEGE</span>
+                    <span class="sub">EST. 1998 | PROFESSIONAL BEAUTY TRAINING</span>
+                </a>
             </div>
             <button class="menu-toggle" id="mobile-menu">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links" id="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="courses.html">Courses</a></li>
-    <li><a href="branches.html">Branches</a></li>
-    <li><a href="blog.html">Blog</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="#" id="searchIcon"><i class="fas fa-search"></i></a></li>
-</ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="branches.html">Branches</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#" id="searchIcon"><i class="fas fa-search"></i></a></li>
             </ul>
         </div>
     </div>
 </header>
 
 <main>
-        <!-- ========== SEARCH MODAL ========== -->
-    <style>
-    .search-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.9);
-        z-index: 2001;
-        justify-content: center;
-        align-items: center;
-    }
-    .search-modal-content {
-        background: white;
-        padding: 40px;
-        border-radius: 20px;
-        width: 90%;
-        max-width: 600px;
-        position: relative;
-    }
-    .search-modal-content input {
-        width: 100%;
-        padding: 16px;
-        font-size: 1.2rem;
-        border: 2px solid #9b2d6e;
-        border-radius: 40px;
-        margin-bottom: 20px;
-        font-family: inherit;
-    }
-    .search-results {
-        max-height: 400px;
-        overflow-y: auto;
-    }
-    .search-result-item {
-        padding: 12px;
-        border-bottom: 1px solid #eee;
-        cursor: pointer;
-    }
-    .search-result-item:hover {
-        background: #fef9fc;
-    }
-    .close-search {
-        float: right;
-        font-size: 1.8rem;
-        cursor: pointer;
-        color: #999;
-    }
-    .close-search:hover {
-        color: #9b2d6e;
-    }
-    </style>
-
-    <div id="searchModal" class="search-modal">
-        <div class="search-modal-content">
-            <span class="close-search">&times;</span>
-            <h3 style="margin-bottom: 20px;">Search Website</h3>
-            <input type="text" id="searchInput" placeholder="Type to search...">
-            <div id="searchResults" class="search-results"></div>
-        </div>
-    </div>
-
-    <script>
-    const searchModal = document.getElementById('searchModal');
-    const searchIcon = document.getElementById('searchIcon');
-    const closeSearch = document.querySelector('.close-search');
-    const searchInput = document.getElementById('searchInput');
-    const searchResults = document.getElementById('searchResults');
-
-    const pagesToSearch = [
-        { title: "Home", url: "index.html", content: "home beauty college training courses" },
-        { title: "About Us", url: "about.html", content: "about mission vision faculty history 28 years" },
-        { title: "Courses", url: "courses.html", content: "courses hairdressing makeup nail skincare entrepreneurship" },
-        { title: "Branches", url: "branches.html", content: "branches locations addis ababa megenagna arada merkato gofa" },
-        { title: "Contact", url: "contact.html", content: "contact phone email address form" },
-        { title: "Blog", url: "blog.html", content: "blog news tips articles beauty" },
-        { title: "Gallery", url: "gallery.html", content: "gallery photos images training" }
-    ];
-
-    if (searchIcon) {
-        searchIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            searchModal.style.display = 'flex';
-            searchInput.focus();
-        });
-    }
-
-    if (closeSearch) {
-        closeSearch.addEventListener('click', () => {
-            searchModal.style.display = 'none';
-        });
-    }
-
-    searchModal.addEventListener('click', (e) => {
-        if (e.target === searchModal) {
-            searchModal.style.display = 'none';
-        }
-    });
-
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            if (query.length < 2) {
-                searchResults.innerHTML = '';
-                return;
-            }
-            
-            const results = pagesToSearch.filter(page => 
-                page.title.toLowerCase().includes(query) || 
-                page.content.toLowerCase().includes(query)
-            );
-            
-            if (results.length === 0) {
-                searchResults.innerHTML = '<p style="color: #666;">No results found. Try a different word.</p>';
-            } else {
-                searchResults.innerHTML = results.map(result => `
-                    <div class="search-result-item" onclick="window.location.href='${result.url}'">
-                        <strong>📄 ${result.title}</strong><br>
-                        <small style="color: #9b2d6e;">Click to visit →</small>
-                    </div>
-                `).join('');
-            }
-        });
-    }
-    </script>
-    <!-- ========== END SEARCH MODAL ========== -->
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1>Transform Your Passion into <span class="highlight">Professional Beauty Career</span></h1>
                 <p>28+ years of excellence | 5 branches across Addis Ababa | 5000+ successful graduates</p>
                 <div class="hero-buttons">
-                    <a href="courses.html" class="btn btn-primary">Explore Courses</a>
+                    <a href="courses.html" class="btn btn-primary">Explore Courses ✨</a>
                     <a href="contact.html" class="btn btn-outline">Contact Us</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://placehold.co/500x400/fdf2f8/9b2d6e?text=Beauty+Training" alt="Beauty training session">
+                <img src="https://placehold.co/500x400/1a1a2a/FFD700?text=Beauty+Training" alt="Beauty training session">
             </div>
         </div>
     </section>
     
-    <!-- Stats Section -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
                     <h3>28+</h3>
-                    <p>Years of Experience</p>
+                    <p>Years of Excellence</p>
                 </div>
                 <div class="stat-item">
                     <h3>5</h3>
@@ -553,7 +532,6 @@
         </div>
     </section>
     
-    <!-- Courses Preview -->
     <section class="courses">
         <div class="container">
             <div class="section-title">
@@ -561,24 +539,29 @@
                 <p>Hands-on training designed to make you industry-ready</p>
             </div>
             <div class="course-grid" id="course-preview">
-                <!-- Sample courses - these will become dynamic via CMS later -->
                 <div class="course-card">
-                    <img src="https://placehold.co/400x200/fdf2f8/9b2d6e?text=Hairdressing" alt="Hairdressing">
+                    <img src="https://placehold.co/600x400/1a1a2a/FFD700?text=Hairdressing" alt="Hairdressing">
                     <h3>Professional Hairdressing</h3>
                     <p>Cutting, styling, coloring, and hair treatment. 3-6 months program.</p>
-                    <a href="#" class="btn btn-small btn-outline">Learn More →</a>
+                    <div style="padding: 0 20px 20px;">
+                        <a href="courses.html" class="btn btn-outline" style="padding: 8px 20px;">Learn More →</a>
+                    </div>
                 </div>
                 <div class="course-card">
-                    <img src="https://placehold.co/400x200/fdf2f8/9b2d6e?text=Makeup" alt="Makeup">
+                    <img src="https://placehold.co/600x400/1a1a2a/FFD700?text=Makeup" alt="Makeup">
                     <h3>Makeup Artistry</h3>
                     <p>Bridal, fashion, and editorial makeup with latest techniques.</p>
-                    <a href="#" class="btn btn-small btn-outline">Learn More →</a>
+                    <div style="padding: 0 20px 20px;">
+                        <a href="courses.html" class="btn btn-outline" style="padding: 8px 20px;">Learn More →</a>
+                    </div>
                 </div>
                 <div class="course-card">
-                    <img src="https://placehold.co/400x200/fdf2f8/9b2d6e?text=Nail+Care" alt="Nail Care">
+                    <img src="https://placehold.co/600x400/1a1a2a/FFD700?text=Nail+Care" alt="Nail Care">
                     <h3>Nail Technology</h3>
                     <p>Manicure, pedicure, gel, acrylic nails, and nail art.</p>
-                    <a href="#" class="btn btn-small btn-outline">Learn More →</a>
+                    <div style="padding: 0 20px 20px;">
+                        <a href="courses.html" class="btn btn-outline" style="padding: 8px 20px;">Learn More →</a>
+                    </div>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
@@ -593,7 +576,7 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <h3>Lovely Beauty College</h3>
-                <p>Empowering youth with professional beauty skills since 1996.</p>
+                <p>Empowering youth with professional beauty skills since 1998.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -609,277 +592,36 @@
             </div>
             <div class="footer-col">
                 <h3>Contact Info</h3>
-                <p><i class="fas fa-phone"></i> +251 911 234 567</p>
-                <p><i class="fas fa-envelope"></i> info@lovelybeauty.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                <p><i class="fas fa-phone"></i> Megenagna: 0116587060</p>
+                <p><i class="fas fa-phone"></i> Sebatgna: 0112750345</p>
+                <p><i class="fas fa-mobile-alt"></i> Mobile: 0991171819 / 0911221032</p>
+                <p><i class="fas fa-map-marker-alt"></i> Megenagna, Nucleus Plaza 5th Floor</p>
             </div>
         </div>
         <div class="copyright">
             <p>&copy; 2025 Lovely Beauty College. All rights reserved.</p>
+            <p style="font-size: 0.8rem; margin-top: 8px;">
+                <i class="fas fa-bolt"></i> Powered by <strong>Addis Power</strong> | AI & Web Solutions for Ethiopian Businesses
+            </p>
         </div>
     </div>
 </footer>
 
 <script>
-    // Mobile menu toggle
+    // Mobile menu
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.getElementById('nav-links');
-    
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-    
-    // Close menu when clicking a link (mobile)
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    }
     document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-        });
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
     });
+    
+    // Search functionality (add your search modal code here)
 </script>
+
+<!-- CHATBOT with 100+ responses will be added in next step -->
 
 </body>
 </html>
-<!-- FAQ Chatbot -->
-<style>
-.chatbot-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-.chatbot-toggle {
-    background-color: #9b2d6e;
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: all 0.3s;
-    border: none;
-    font-size: 1.8rem;
-}
-.chatbot-toggle:hover {
-    transform: scale(1.05);
-    background-color: #7a2356;
-}
-.chatbot-window {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 350px;
-    max-width: calc(100vw - 40px);
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 1001;
-}
-.chatbot-header {
-    background-color: #9b2d6e;
-    color: white;
-    padding: 16px;
-    font-weight: 600;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.chatbot-header button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-.chatbot-messages {
-    height: 350px;
-    overflow-y: auto;
-    padding: 16px;
-    background: #f9f9f9;
-}
-.chatbot-message {
-    margin-bottom: 12px;
-    display: flex;
-}
-.chatbot-message.user {
-    justify-content: flex-end;
-}
-.chatbot-message.bot {
-    justify-content: flex-start;
-}
-.message-bubble {
-    max-width: 80%;
-    padding: 10px 14px;
-    border-radius: 18px;
-    font-size: 0.9rem;
-}
-.chatbot-message.user .message-bubble {
-    background-color: #9b2d6e;
-    color: white;
-    border-bottom-right-radius: 4px;
-}
-.chatbot-message.bot .message-bubble {
-    background-color: #e9ecef;
-    color: #333;
-    border-bottom-left-radius: 4px;
-}
-.chatbot-faq-buttons {
-    padding: 12px;
-    border-top: 1px solid #eee;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-.faq-btn {
-    background: #fef9fc;
-    border: 1px solid #9b2d6e;
-    color: #9b2d6e;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-.faq-btn:hover {
-    background: #9b2d6e;
-    color: white;
-}
-.chatbot-input {
-    display: flex;
-    padding: 12px;
-    border-top: 1px solid #eee;
-    gap: 8px;
-}
-.chatbot-input input {
-    flex: 1;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    font-family: inherit;
-}
-.chatbot-input button {
-    background: #9b2d6e;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    padding: 8px 16px;
-    cursor: pointer;
-}
-</style>
-
-<div class="chatbot-container">
-    <button class="chatbot-toggle" id="chatbotToggle">
-        <i class="fas fa-comment-dots"></i>
-    </button>
-    <div class="chatbot-window" id="chatbotWindow">
-        <div class="chatbot-header">
-            <span><i class="fas fa-robot"></i> Beauty Assistant</span>
-            <button id="closeChatbot">&times;</button>
-        </div>
-        <div class="chatbot-messages" id="chatbotMessages">
-            <div class="chatbot-message bot">
-                <div class="message-bubble">Hello! 👋 Welcome to Lovely Beauty College. How can I help you today?</div>
-            </div>
-        </div>
-        <div class="chatbot-faq-buttons" id="faqButtons">
-            <button class="faq-btn" data-question="What courses do you offer?">📚 Courses</button>
-            <button class="faq-btn" data-question="How long are the courses?">⏰ Duration</button>
-            <button class="faq-btn" data-question="Do you have branches near me?">📍 Branches</button>
-            <button class="faq-btn" data-question="How can I enroll?">📝 Enrollment</button>
-            <button class="faq-btn" data-question="Do you offer certificates?">🎓 Certificates</button>
-        </div>
-        <div class="chatbot-input">
-            <input type="text" id="chatbotInput" placeholder="Type your question...">
-            <button id="sendMessage">Send</button>
-        </div>
-    </div>
-</div>
-
-<script>
-// FAQ Database (editable via CMS later)
-const faqDatabase = {
-    "what courses do you offer": "We offer Professional Hairdressing, Makeup Artistry, Nail Technology, Skincare & Facial Treatments, and Beauty Entrepreneurship. Check our Courses page for details!",
-    "courses": "We offer 5 main programs: Hairdressing (3-6 months), Makeup Artistry (2-4 months), Nail Technology (2-3 months), Skincare (3 months), and Entrepreneurship (2 months).",
-    "how long are the courses": "Course durations range from 2 to 6 months depending on the program. Hairdressing is 3-6 months, Makeup is 2-4 months, Nail Tech is 2-3 months.",
-    "duration": "Most courses take 2-6 months to complete. We offer flexible schedules!",
-    "branches": "We have 5 branches across Addis Ababa: Megenagna (Main), Arada, Merkato, Gofa, and Bole Road. Visit our Branches page for maps!",
-    "do you have branches near me": "We have 5 branches in Addis Ababa. Check our Branches page to find the nearest location!",
-    "how can i enroll": "You can enroll by visiting any branch, calling +251 99 826 1099, or filling out the contact form on our website.",
-    "enrollment": "To enroll, simply visit our college, call us, or send a message through our Contact page. We'll guide you through the process!",
-    "do you offer certificates": "Yes! All our courses include a professional certificate upon completion, recognized in the beauty industry.",
-    "certificates": "Yes, graduates receive a professional certificate that helps them find jobs or start their own business.",
-    "price": "Please contact us directly for current course fees. Prices vary by program and duration.",
-    "cost": "For pricing information, please call or email us. We offer affordable payment options!",
-    "hello": "Hello! Welcome to Lovely Beauty College. How can I assist you today?",
-    "hi": "Hi there! 👋 Feel free to ask me about courses, branches, enrollment, or anything else!",
-    "thank you": "You're very welcome! 😊 Is there anything else I can help you with?"
-};
-
-const chatbotMessages = document.getElementById('chatbotMessages');
-const chatbotInput = document.getElementById('chatbotInput');
-const sendBtn = document.getElementById('sendMessage');
-const chatbotToggle = document.getElementById('chatbotToggle');
-const chatbotWindow = document.getElementById('chatbotWindow');
-const closeChatbot = document.getElementById('closeChatbot');
-
-function addMessage(text, isUser = false) {
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
-    messageDiv.innerHTML = `<div class="message-bubble">${text}</div>`;
-    chatbotMessages.appendChild(messageDiv);
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-}
-
-function getBotResponse(question) {
-    const lowerQuestion = question.toLowerCase().trim();
-    for (const [key, answer] of Object.entries(faqDatabase)) {
-        if (lowerQuestion.includes(key)) {
-            return answer;
-        }
-    }
-    return "Thank you for your question! Please call us at +251 99 826 1099 or email info@lovelybeauty.com for more details. 😊";
-}
-
-function sendUserMessage() {
-    const message = chatbotInput.value.trim();
-    if (!message) return;
-    
-    addMessage(message, true);
-    chatbotInput.value = '';
-    
-    setTimeout(() => {
-        const response = getBotResponse(message);
-        addMessage(response, false);
-    }, 500);
-}
-
-sendBtn.addEventListener('click', sendUserMessage);
-chatbotInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') sendUserMessage();
-});
-
-chatbotToggle.addEventListener('click', () => {
-    chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
-});
-
-closeChatbot.addEventListener('click', () => {
-    chatbotWindow.style.display = 'none';
-});
-
-// FAQ button handlers
-document.querySelectorAll('.faq-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const question = btn.getAttribute('data-question');
-        addMessage(question, true);
-        setTimeout(() => {
-            const response = getBotResponse(question);
-            addMessage(response, false);
-        }, 300);
-    });
-});
-</script>
