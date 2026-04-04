@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Lovely Beauty College – Professional Beauty Training</title>
-    <meta name="description" content="Lovely Beauty College offers professional hairdressing, makeup, nail care, and skincare training across 5 branches in Addis Ababa. 28+ years of experience.">
+    <title>Lovely Beauty College – Premier Beauty Training in Ethiopia</title>
+    <meta name="description" content="Lovely Beauty College offers professional hairdressing, makeup, nail care, and skincare training. 28+ years of excellence, 5 branches in Addis Ababa.">
     
-    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
@@ -30,14 +29,14 @@
             padding: 0 24px;
         }
 
-        /* ========== GOLD & NEON THEME ========== */
+        /* ========== GOLD & LUXURY THEME ========== */
         :root {
             --gold: #FFD700;
             --gold-dark: #DAA520;
-            --gold-neon: #FFD700;
-            --gold-glow: 0 0 10px rgba(255,215,0,0.5);
+            --gold-light: #FFF8DC;
+            --gold-glow: 0 0 15px rgba(255, 215, 0, 0.4);
             --black-bg: #0a0a0a;
-            --card-bg: rgba(20, 20, 30, 0.8);
+            --card-bg: rgba(20, 20, 30, 0.85);
         }
 
         h1, h2, h3 {
@@ -46,7 +45,7 @@
             margin-bottom: 16px;
         }
 
-        h1 { font-size: 3rem; }
+        h1 { font-size: 3.2rem; }
         h2 { font-size: 2.2rem; }
         h3 { font-size: 1.3rem; }
 
@@ -78,10 +77,15 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
 
+        .section-title p {
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+
         /* Buttons */
         .btn {
             display: inline-block;
-            padding: 12px 28px;
+            padding: 14px 32px;
             border-radius: 40px;
             font-weight: 600;
             text-decoration: none;
@@ -94,12 +98,12 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             color: #0a0a0a;
-            box-shadow: 0 4px 15px rgba(255,215,0,0.3);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255,215,0,0.5);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
         }
 
         .btn-outline {
@@ -140,7 +144,7 @@
         }
 
         .logo .main {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: var(--gold);
             animation: goldGlow 3s ease-in-out infinite;
@@ -155,7 +159,7 @@
 
         @keyframes goldGlow {
             0% { text-shadow: 0 0 0px rgba(255, 215, 0, 0); transform: scale(1); }
-            50% { text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.4); transform: scale(1.02); }
+            50% { text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); transform: scale(1.02); }
             100% { text-shadow: 0 0 0px rgba(255, 215, 0, 0); transform: scale(1); }
         }
 
@@ -185,11 +189,11 @@
             cursor: pointer;
         }
 
-        /* Hero Section with Vector Graphics */
+        /* Hero Section */
         .hero {
             position: relative;
             overflow: hidden;
-            background: radial-gradient(circle at 10% 20%, #1a1a2a, #0a0a0a);
+            background: radial-gradient(circle at 30% 10%, #1a1a2a, #0a0a0a);
             padding: 80px 0;
         }
 
@@ -211,8 +215,8 @@
         .hero::after {
             content: '✨';
             position: absolute;
-            top: 20%;
-            right: 5%;
+            top: 15%;
+            right: 8%;
             font-size: 6rem;
             color: var(--gold);
             opacity: 0.1;
@@ -234,11 +238,7 @@
             z-index: 2;
         }
 
-        .hero-content h1 {
-            font-size: 3rem;
-        }
-
-        .hero-content .highlight {
+        .hero-content h1 .highlight {
             color: var(--gold);
             text-shadow: var(--gold-glow);
         }
@@ -253,6 +253,18 @@
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.02);
         }
 
         /* Stats Section */
@@ -274,35 +286,58 @@
         .stat-item h3 {
             font-size: 2.5rem;
             color: var(--gold);
+            margin-bottom: 8px;
         }
 
-        /* 3D Cards */
+        .stat-item p {
+            color: #ccc;
+        }
+
+        /* 3D Courses Section */
         .courses {
             padding: 80px 0;
             position: relative;
+        }
+
+        .courses::before {
+            content: '✦';
+            position: absolute;
+            top: 5%;
+            left: 3%;
+            font-size: 5rem;
+            color: var(--gold);
+            opacity: 0.08;
+            font-family: monospace;
+            animation: spin 20s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .course-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
+            position: relative;
+            z-index: 2;
         }
 
         .course-card {
-            background: rgba(20, 20, 30, 0.9);
-            backdrop-filter: blur(5px);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.25);
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             transform-style: preserve-3d;
-            perspective: 1000px;
         }
 
         .course-card:hover {
             transform: translateY(-12px) rotateX(3deg);
-            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.2);
             border-color: var(--gold);
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 215, 0, 0.2);
         }
 
         .course-card img {
@@ -324,6 +359,12 @@
         .course-card p {
             padding: 0 20px 20px;
             color: #ccc;
+        }
+
+        .course-card .btn-outline {
+            margin: 0 20px 20px;
+            display: inline-block;
+            padding: 8px 20px;
         }
 
         /* Footer */
@@ -401,6 +442,9 @@
             h1 {
                 font-size: 2rem;
             }
+            .stats-grid {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -412,7 +456,7 @@
             <div class="logo">
                 <a href="index.html">
                     <span class="main">LOVELY BEAUTY COLLEGE</span>
-                    <span class="sub">EST. 1998 | PROFESSIONAL BEAUTY TRAINING</span>
+                    <span class="sub">EST. 1998 | PREMIER BEAUTY TRAINING</span>
                 </a>
             </div>
             <button class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></button>
@@ -431,33 +475,36 @@
 </header>
 
 <main>
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Transform Your Passion into <span class="highlight">Professional Beauty Career</span></h1>
-                <p>28+ years of excellence | 5 branches across Addis Ababa | 5000+ successful graduates</p>
+                <h1>Transform Your Passion into a <span class="highlight">Professional Beauty Career</span></h1>
+                <p>✨ 28+ years of excellence | 5 branches across Addis Ababa | 5,000+ successful graduates ✨</p>
                 <div class="hero-buttons">
                     <a href="courses.html" class="btn btn-primary">Explore Courses ✨</a>
                     <a href="contact.html" class="btn btn-outline">Contact Us</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://placehold.co/500x400/1a1a2a/FFD700?text=Beauty+Training" alt="Beauty training" style="border-radius: 20px; box-shadow: 0 20px 30px rgba(0,0,0,0.3);">
+                <img src="https://placehold.co/500x400/1a1a2a/FFD700?text=Beauty+Training" alt="Beauty Training">
             </div>
         </div>
     </section>
 
+    <!-- Stats Section -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat-item"><h3>28+</h3><p>Years of Experience</p></div>
+                <div class="stat-item"><h3>28+</h3><p>Years of Excellence</p></div>
                 <div class="stat-item"><h3>5</h3><p>Branches</p></div>
-                <div class="stat-item"><h3>5000+</h3><p>Happy Graduates</p></div>
+                <div class="stat-item"><h3>5,000+</h3><p>Happy Graduates</p></div>
                 <div class="stat-item"><h3>100%</h3><p>Practical Training</p></div>
             </div>
         </div>
     </section>
 
+    <!-- Courses Preview -->
     <section class="courses">
         <div class="container">
             <div class="section-title">
@@ -469,19 +516,19 @@
                     <img src="https://placehold.co/600x400/1a1a2a/FFD700?text=Hairdressing" alt="Hairdressing">
                     <h3>Professional Hairdressing</h3>
                     <p>Cutting, styling, coloring, and hair treatment. 3-6 months program.</p>
-                    <div style="padding: 0 20px 20px;"><a href="courses.html" class="btn btn-outline" style="padding: 8px 20px;">Learn More →</a></div>
+                    <a href="courses.html" class="btn btn-outline">Learn More →</a>
                 </div>
                 <div class="course-card">
                     <img src="https://placehold.co/600x400/1a1a2a/FFD700?text=Makeup" alt="Makeup">
                     <h3>Makeup Artistry</h3>
                     <p>Bridal, fashion, and editorial makeup with latest techniques.</p>
-                    <div style="padding: 0 20px 20px;"><a href="courses.html" class="btn btn-outline" style="padding: 8px 20px;">Learn More →</a></div>
+                    <a href="courses.html" class="btn btn-outline">Learn More →</a>
                 </div>
                 <div class="course-card">
                     <img src="https://placehold.co/600x400/1a1a2a/FFD700?text=Nail+Care" alt="Nail Care">
                     <h3>Nail Technology</h3>
                     <p>Manicure, pedicure, gel, acrylic nails, and nail art.</p>
-                    <div style="padding: 0 20px 20px;"><a href="courses.html" class="btn btn-outline" style="padding: 8px 20px;">Learn More →</a></div>
+                    <a href="courses.html" class="btn btn-outline">Learn More →</a>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
@@ -517,10 +564,11 @@
             </div>
             <div class="footer-col">
                 <h3>Contact Info</h3>
-                <p><i class="fas fa-phone"></i> Megenagna: 0116587060</p>
-                <p><i class="fas fa-phone"></i> Sebatgna: 0112750345</p>
-                <p><i class="fas fa-mobile-alt"></i> 0991171819 / 0911221032</p>
-                <p><i class="fas fa-map-marker-alt"></i> Megenagna, Nucleus Plaza</p>
+                <p><i class="fas fa-phone"></i> Megenagna: +251 116587060</p>
+                <p><i class="fas fa-phone"></i> Sebatgna: +251 112750345</p>
+                <p><i class="fas fa-phone"></i> Piassa: +251118125206</p>
+                <p><i class="fas fa-mobile-alt"></i> 0991171819 / 0911221032 / 0945671188</p>
+                <p><i class="fas fa-map-marker-alt"></i> Megenagna, Nucleus Plaza 5th Floor</p>
             </div>
         </div>
         <div class="copyright">
@@ -542,16 +590,10 @@
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => navLinksMenu.classList.remove('active'));
     });
-
-    // Basic Search Alert (You can replace with your modal logic)
-    const searchIcon = document.getElementById('searchIcon');
-    if (searchIcon) {
-        searchIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Search functionality coming soon!');
-        });
-    }
 </script>
+
+<!-- ========== SEARCH MODAL (Add your existing search modal code here) ========== -->
+<!-- ========== FAQ CHATBOT (Add your existing chatbot code here) ========== -->
 
 </body>
 </html>
