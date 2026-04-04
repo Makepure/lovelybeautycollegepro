@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Lovely Beauty College – Premier Beauty Training in Ethiopia</title>
-    <meta name="description" content="Lovely Beauty College offers professional hairdressing, makeup, nail care, and skincare training. 28+ years of excellence, 5 branches in Addis Ababa.">
+    <title>Lovely Beauty College – Megenagna Branch | Premier Beauty Training in Ethiopia</title>
+    <meta name="description" content="Lovely Beauty College Megenagna Branch offers professional hairdressing, makeup, nail care, and skincare training. 28+ years of excellence.">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -18,8 +18,8 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
+            background: #ffffff;
+            color: #1a1a2e;
             line-height: 1.5;
         }
 
@@ -29,14 +29,13 @@
             padding: 0 24px;
         }
 
-        /* ========== GOLD & LUXURY THEME ========== */
+        /* ========== WHITE & GOLD THEME ========== */
         :root {
-            --gold: #FFD700;
-            --gold-dark: #DAA520;
-            --gold-light: #FFF8DC;
-            --gold-glow: 0 0 15px rgba(255, 215, 0, 0.4);
-            --black-bg: #0a0a0a;
-            --card-bg: rgba(20, 20, 30, 0.85);
+            --gold: #DAA520;
+            --gold-light: #FFD700;
+            --gold-dark: #B8860B;
+            --shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 15px 35px rgba(218, 165, 32, 0.12);
         }
 
         h1, h2, h3 {
@@ -45,7 +44,7 @@
             margin-bottom: 16px;
         }
 
-        h1 { font-size: 3.2rem; }
+        h1 { font-size: 3rem; }
         h2 { font-size: 2.2rem; }
         h3 { font-size: 1.3rem; }
 
@@ -55,8 +54,7 @@
         }
 
         .section-title h2 {
-            color: var(--gold);
-            text-shadow: var(--gold-glow);
+            color: var(--gold-dark);
             display: inline-block;
             position: relative;
         }
@@ -64,21 +62,15 @@
         .section-title h2::before,
         .section-title h2::after {
             content: '✦';
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--gold);
-            margin: 0 15px;
-            opacity: 0.8;
+            margin: 0 12px;
+            opacity: 0.7;
             display: inline-block;
-            animation: sparkle 2s infinite;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 0.4; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
         }
 
         .section-title p {
-            color: #ccc;
+            color: #555;
             font-size: 1.1rem;
         }
 
@@ -96,36 +88,37 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: #0a0a0a;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
         }
 
         .btn-outline {
             border: 2px solid var(--gold);
-            color: var(--gold);
+            color: var(--gold-dark);
             background: transparent;
         }
 
         .btn-outline:hover {
-            background: var(--gold);
-            color: #0a0a0a;
+            background: var(--gold-light);
+            color: #ffffff;
             transform: translateY(-3px);
+            border-color: var(--gold-light);
         }
 
         /* Header */
         header {
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
+            background: #ffffff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            border-bottom: 2px solid var(--gold-light);
         }
 
         .navbar {
@@ -136,7 +129,6 @@
             flex-wrap: wrap;
         }
 
-        /* Animated Logo */
         .logo a {
             text-decoration: none;
             display: flex;
@@ -146,21 +138,18 @@
         .logo .main {
             font-size: 1.5rem;
             font-weight: 800;
-            color: var(--gold);
-            animation: goldGlow 3s ease-in-out infinite;
+            color: var(--gold-dark);
             letter-spacing: 1px;
+        }
+
+        .logo .main span {
+            color: var(--gold-light);
         }
 
         .logo .sub {
             font-size: 0.7rem;
-            color: #ccc;
+            color: #666;
             letter-spacing: 2px;
-        }
-
-        @keyframes goldGlow {
-            0% { text-shadow: 0 0 0px rgba(255, 215, 0, 0); transform: scale(1); }
-            50% { text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); transform: scale(1.02); }
-            100% { text-shadow: 0 0 0px rgba(255, 215, 0, 0); transform: scale(1); }
         }
 
         .nav-links {
@@ -171,13 +160,13 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #fff;
+            color: #1a1a2e;
             font-weight: 500;
             transition: 0.3s;
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color: var(--gold);
+            color: var(--gold-dark);
         }
 
         .menu-toggle {
@@ -185,41 +174,26 @@
             font-size: 1.5rem;
             background: none;
             border: none;
-            color: var(--gold);
+            color: var(--gold-dark);
             cursor: pointer;
         }
 
         /* Hero Section */
         .hero {
+            background: linear-gradient(135deg, #fffaf5 0%, #ffffff 100%);
+            padding: 60px 0;
             position: relative;
             overflow: hidden;
-            background: radial-gradient(circle at 30% 10%, #1a1a2a, #0a0a0a);
-            padding: 80px 0;
         }
 
         .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23FFD700" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>');
-            background-repeat: no-repeat;
-            background-position: bottom;
-            background-size: cover;
-            opacity: 0.3;
-            pointer-events: none;
-        }
-
-        .hero::after {
             content: '✨';
             position: absolute;
-            top: 15%;
-            right: 8%;
-            font-size: 6rem;
-            color: var(--gold);
-            opacity: 0.1;
+            top: 10%;
+            right: 5%;
+            font-size: 8rem;
+            color: var(--gold-light);
+            opacity: 0.08;
             animation: float 6s ease-in-out infinite;
             pointer-events: none;
         }
@@ -239,13 +213,12 @@
         }
 
         .hero-content h1 .highlight {
-            color: var(--gold);
-            text-shadow: var(--gold-glow);
+            color: var(--gold-dark);
         }
 
         .hero-content p {
             font-size: 1.2rem;
-            color: #ccc;
+            color: #555;
             margin-bottom: 32px;
         }
 
@@ -258,8 +231,7 @@
         .hero-image img {
             max-width: 100%;
             border-radius: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
+            box-shadow: var(--shadow);
             transition: transform 0.3s;
         }
 
@@ -267,12 +239,23 @@
             transform: scale(1.02);
         }
 
-        /* Stats Section */
+        .branch-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* Stats */
         .stats {
-            background: #0f0f1a;
+            background: #fef9f0;
             padding: 60px 0;
-            border-top: 1px solid rgba(255, 215, 0, 0.2);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            border-top: 1px solid rgba(218, 165, 32, 0.2);
+            border-bottom: 1px solid rgba(218, 165, 32, 0.2);
         }
 
         .stats-grid {
@@ -285,94 +268,63 @@
 
         .stat-item h3 {
             font-size: 2.5rem;
-            color: var(--gold);
+            color: var(--gold-dark);
             margin-bottom: 8px;
         }
 
         .stat-item p {
-            color: #ccc;
+            color: #555;
         }
 
-        /* 3D Courses Section */
+        /* Courses */
         .courses {
             padding: 80px 0;
-            position: relative;
-        }
-
-        .courses::before {
-            content: '✦';
-            position: absolute;
-            top: 5%;
-            left: 3%;
-            font-size: 5rem;
-            color: var(--gold);
-            opacity: 0.08;
-            font-family: monospace;
-            animation: spin 20s linear infinite;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            background: #ffffff;
         }
 
         .course-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
-            position: relative;
-            z-index: 2;
         }
 
         .course-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            background: #ffffff;
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255, 215, 0, 0.25);
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            transform-style: preserve-3d;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(218, 165, 32, 0.15);
+            transition: all 0.3s;
         }
 
         .course-card:hover {
-            transform: translateY(-12px) rotateX(3deg);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
             border-color: var(--gold);
-            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 215, 0, 0.2);
         }
 
         .course-card img {
             width: 100%;
             height: 220px;
             object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .course-card:hover img {
-            transform: scale(1.05);
         }
 
         .course-card h3 {
-            color: var(--gold);
+            color: var(--gold-dark);
             padding: 20px 20px 10px;
         }
 
         .course-card p {
             padding: 0 20px 20px;
-            color: #ccc;
-        }
-
-        .course-card .btn-outline {
-            margin: 0 20px 20px;
-            display: inline-block;
-            padding: 8px 20px;
+            color: #555;
         }
 
         /* Footer */
         footer {
-            background: #050505;
+            background: #1a1a2e;
             color: #ccc;
             padding: 48px 0 24px;
-            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            margin-top: 60px;
         }
 
         .footer-grid {
@@ -383,7 +335,7 @@
         }
 
         .footer-col h3 {
-            color: var(--gold);
+            color: var(--gold-light);
             margin-bottom: 20px;
         }
 
@@ -394,14 +346,14 @@
         }
 
         .footer-col a:hover {
-            color: var(--gold);
+            color: var(--gold-light);
         }
 
         .social-links a {
             display: inline-block;
             margin-right: 15px;
             font-size: 1.3rem;
-            color: var(--gold);
+            color: var(--gold-light);
             transition: 0.3s;
         }
 
@@ -413,11 +365,10 @@
         .copyright {
             text-align: center;
             padding-top: 24px;
-            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            border-top: 1px solid #333;
             font-size: 0.9rem;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -455,8 +406,8 @@
         <div class="navbar">
             <div class="logo">
                 <a href="index.html">
-                    <span class="main">LOVELY BEAUTY COLLEGE</span>
-                    <span class="sub">EST. 1998 | PREMIER BEAUTY TRAINING</span>
+                    <span class="main">LOVELY <span>BEAUTY</span> COLLEGE</span>
+                    <span class="sub">MEGENAGNA BRANCH | EST. 1998</span>
                 </a>
             </div>
             <button class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></button>
@@ -475,10 +426,10 @@
 </header>
 
 <main>
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
+                <div class="branch-badge">✨ MEGENAGNA MAIN BRANCH ✨</div>
                 <h1>Transform Your Passion into a <span class="highlight">Professional Beauty Career</span></h1>
                 <p>✨ 28+ years of excellence | 5 branches across Addis Ababa | 5,000+ successful graduates ✨</p>
                 <div class="hero-buttons">
@@ -487,12 +438,11 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://placehold.co/500x400/1a1a2a/FFD700?text=Beauty+Training" alt="Beauty Training">
+                <img src="https://placehold.co/500x400/fef9f0/DAA520?text=Beauty+Training" alt="Beauty Training">
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
@@ -504,7 +454,6 @@
         </div>
     </section>
 
-    <!-- Courses Preview -->
     <section class="courses">
         <div class="container">
             <div class="section-title">
@@ -513,22 +462,22 @@
             </div>
             <div class="course-grid">
                 <div class="course-card">
-                    <img src="https://placehold.co/600x400/1a1a2a/FFD700?text=Hairdressing" alt="Hairdressing">
+                    <img src="https://placehold.co/600x400/fef9f0/DAA520?text=Hairdressing" alt="Hairdressing">
                     <h3>Professional Hairdressing</h3>
                     <p>Cutting, styling, coloring, and hair treatment. 3-6 months program.</p>
-                    <a href="courses.html" class="btn btn-outline">Learn More →</a>
+                    <div style="padding: 0 20px 20px;"><a href="courses.html" class="btn btn-outline" style="padding: 8px 20px;">Learn More →</a></div>
                 </div>
                 <div class="course-card">
-                    <img src="https://placehold.co/600x400/1a1a2a/FFD700?text=Makeup" alt="Makeup">
+                    <img src="https://placehold.co/600x400/fef9f0/DAA520?text=Makeup" alt="Makeup">
                     <h3>Makeup Artistry</h3>
                     <p>Bridal, fashion, and editorial makeup with latest techniques.</p>
-                    <a href="courses.html" class="btn btn-outline">Learn More →</a>
+                    <div style="padding: 0 20px 20px;"><a href="courses.html" class="btn btn-outline" style="padding: 8px 20px;">Learn More →</a></div>
                 </div>
                 <div class="course-card">
-                    <img src="https://placehold.co/600x400/1a1a2a/FFD700?text=Nail+Care" alt="Nail Care">
+                    <img src="https://placehold.co/600x400/fef9f0/DAA520?text=Nail+Care" alt="Nail Care">
                     <h3>Nail Technology</h3>
                     <p>Manicure, pedicure, gel, acrylic nails, and nail art.</p>
-                    <a href="courses.html" class="btn btn-outline">Learn More →</a>
+                    <div style="padding: 0 20px 20px;"><a href="courses.html" class="btn btn-outline" style="padding: 8px 20px;">Learn More →</a></div>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
@@ -567,7 +516,7 @@
                 <p><i class="fas fa-phone"></i> Megenagna: +251 116587060</p>
                 <p><i class="fas fa-phone"></i> Sebatgna: +251 112750345</p>
                 <p><i class="fas fa-phone"></i> Piassa: +251118125206</p>
-                <p><i class="fas fa-mobile-alt"></i> 0991171819 / 0911221032 / 0945671188</p>
+                <p><i class="fas fa-mobile-alt"></i> 0991171819 / 0911221032</p>
                 <p><i class="fas fa-map-marker-alt"></i> Megenagna, Nucleus Plaza 5th Floor</p>
             </div>
         </div>
@@ -581,7 +530,6 @@
 </footer>
 
 <script>
-    // Mobile Menu Toggle
     const menuToggle = document.getElementById('mobile-menu');
     const navLinksMenu = document.getElementById('nav-links');
     if (menuToggle) {
@@ -592,8 +540,7 @@
     });
 </script>
 
-<!-- ========== SEARCH MODAL (Add your existing search modal code here) ========== -->
-<!-- ========== FAQ CHATBOT (Add your existing chatbot code here) ========== -->
+<!-- Add your Search Modal and Chatbot code here -->
 
 </body>
 </html>
